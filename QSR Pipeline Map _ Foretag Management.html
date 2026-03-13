@@ -1,0 +1,2073 @@
+
+<!-- saved from url=(0078)file:///E:/1%20Bus%20Plan%20Tenant%20Match/Foretag%20QSR%20Pipeline%20Map.html -->
+<html lang="en" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>QSR Pipeline Map | Foretag Management</title>
+  <meta name="description" content="Florida QSR acquisition pipeline — corridor clusters, traffic, nationals, deal stages.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="./QSR Pipeline Map _ Foretag Management_files/leaflet.css">
+  <script src="./QSR Pipeline Map _ Foretag Management_files/leaflet.js.download"></script>
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" href="./QSR Pipeline Map _ Foretag Management_files/style.css">
+  <link rel="stylesheet" href="./QSR Pipeline Map _ Foretag Management_files/style(1).css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./QSR Pipeline Map _ Foretag Management_files/css2" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem; --radius-xl: 1rem;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    /* ── Dark Palette (default) ── */
+    :root, [data-theme="dark"] {
+      --color-bg:             #0f1117;
+      --color-surface:        #161920;
+      --color-surface-2:      #1c2028;
+      --color-surface-offset: #20242e;
+      --color-divider:        #262b36;
+      --color-border:         #2e3444;
+      --color-text:           #e2e5ed;
+      --color-text-muted:     #8891a4;
+      --color-text-faint:     #4d5468;
+      --color-text-inverse:   #0f1117;
+      /* Accent — amber/gold (QSR warmth + commercial real estate) */
+      --color-primary:        #f59e0b;
+      --color-primary-hover:  #fbbf24;
+      --color-primary-active: #fcd34d;
+      --color-primary-dim:    rgba(245, 158, 11, 0.15);
+      /* Status colors */
+      --color-active:    #10b981;   /* green — active deal */
+      --color-prospect:  #3b82f6;   /* blue — prospect/analyzing */
+      --color-hold:      #f59e0b;   /* amber — on hold */
+      --color-pass:      #6b7280;   /* gray — passed */
+      --color-reposition:#a855f7;   /* purple — reposition */
+      /* Score colors */
+      --color-score-high:   #10b981;
+      --color-score-mid:    #f59e0b;
+      --color-score-low:    #ef4444;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+    }
+
+    [data-theme="light"] {
+      --color-bg:             #f8f9fc;
+      --color-surface:        #ffffff;
+      --color-surface-2:      #f1f3f8;
+      --color-surface-offset: #e8ebf3;
+      --color-divider:        #dde1ec;
+      --color-border:         #c8cedd;
+      --color-text:           #111827;
+      --color-text-muted:     #4b5563;
+      --color-text-faint:     #9ca3af;
+      --color-text-inverse:   #ffffff;
+      --color-primary:        #d97706;
+      --color-primary-hover:  #b45309;
+      --color-primary-active: #92400e;
+      --color-primary-dim:    rgba(217, 119, 6, 0.12);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    /* ── Base Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      background: var(--color-bg);
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Top Bar ── */
+    #topbar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      flex-shrink: 0;
+      min-height: 52px;
+    }
+
+    #logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+    #logo svg { width: 28px; height: 28px; }
+    #logo-text {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    #logo-text span {
+      display: block;
+      font-size: var(--text-xs);
+      font-weight: 400;
+      color: var(--color-text-muted);
+      letter-spacing: 0;
+    }
+
+    #topbar-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--color-border);
+      flex-shrink: 0;
+    }
+
+    /* ── Filter Chips ── */
+    #filter-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    #filter-bar::-webkit-scrollbar { display: none; }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      flex-shrink: 0;
+    }
+
+    .filter-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    @media (max-width: 1280px) {
+      .filter-label { display: none; }
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: 4px 10px;
+      border-radius: var(--radius-full, 9999px);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-interactive);
+      user-select: none;
+    }
+    .chip:hover { border-color: var(--color-primary); color: var(--color-text); }
+    .chip.active {
+      background: var(--color-primary-dim);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+    .chip .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── Topbar Actions ── */
+    #topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      color: var(--color-text-muted);
+      transition: all var(--transition-interactive);
+      font-size: 18px;
+    }
+    .icon-btn:hover { color: var(--color-text); border-color: var(--color-primary); }
+
+    /* ── Layout: Map + Side Panel ── */
+    #main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Map ── */
+    #map {
+      flex: 1;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Leaflet dark tile override */
+    .leaflet-tile-pane { filter: brightness(0.85) contrast(1.1) saturate(0.9); }
+    [data-theme="light"] .leaflet-tile-pane { filter: none; }
+
+    .leaflet-control-attribution { display: none !important; }
+    .leaflet-control-zoom { border: 1px solid var(--color-border) !important; border-radius: var(--radius-md) !important; overflow: hidden; }
+    .leaflet-control-zoom a {
+      background: var(--color-surface) !important;
+      color: var(--color-text) !important;
+      border-bottom: 1px solid var(--color-border) !important;
+    }
+    .leaflet-control-zoom a:hover { background: var(--color-surface-2) !important; }
+
+    /* ── Side Panel ── */
+    #side-panel {
+      width: 340px;
+      min-width: 320px;
+      max-width: 400px;
+      background: var(--color-surface);
+      border-left: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: width var(--transition-interactive);
+      z-index: 100;
+    }
+    #side-panel.collapsed { width: 0; min-width: 0; }
+
+    #panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--color-divider);
+      flex-shrink: 0;
+    }
+    #panel-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    #panel-count {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+    }
+
+    #panel-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-2);
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border) transparent;
+    }
+
+    .property-card {
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      margin-bottom: var(--space-2);
+      cursor: pointer;
+      transition: all var(--transition-interactive);
+    }
+    .property-card:hover {
+      border-color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+    .property-card.selected {
+      border-color: var(--color-primary);
+      background: var(--color-primary-dim);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+    .card-address {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+    .card-city {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: var(--radius-full, 9999px);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+    .score-high { background: rgba(16,185,129,0.15); color: var(--color-score-high); }
+    .score-mid  { background: rgba(245,158,11,0.15); color: var(--color-score-mid); }
+    .score-low  { background: rgba(239,68,68,0.15);  color: var(--color-score-low); }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      margin-top: var(--space-2);
+    }
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-divider);
+    }
+
+    .stage-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .card-nationals {
+      margin-top: var(--space-2);
+      font-size: 11px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .card-nationals strong { color: var(--color-text-faint); text-transform: uppercase; font-size: 10px; letter-spacing: 0.05em; display: block; margin-bottom: 2px; }
+
+    /* ── Property Detail Popup ── */
+    #detail-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9000;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    #detail-overlay.open { display: flex; }
+
+    #detail-panel {
+      width: 100%;
+      max-width: 580px;
+      background: var(--color-surface);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      max-height: 85dvh;
+      overflow-y: auto;
+      padding: var(--space-6);
+      box-shadow: var(--shadow-lg);
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-border) transparent;
+    }
+
+    @media (min-width: 640px) {
+      #detail-overlay { align-items: center; }
+      #detail-panel {
+        border-radius: var(--radius-xl);
+        max-width: 560px;
+        max-height: 80dvh;
+      }
+    }
+
+    .detail-close {
+      position: sticky;
+      top: 0;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: var(--space-4);
+    }
+    .detail-close button {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-full, 9999px);
+      background: var(--color-surface-offset);
+      font-size: 18px;
+      color: var(--color-text-muted);
+    }
+    .detail-close button:hover { color: var(--color-text); background: var(--color-border); }
+
+    .detail-address {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: var(--space-1);
+    }
+    .detail-city { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--space-4); }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .detail-stat {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+    }
+    .detail-stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-1);
+    }
+    .detail-stat-value {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      font-family: var(--font-mono);
+    }
+
+    .detail-section {
+      margin-bottom: var(--space-4);
+    }
+    .detail-section-title {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+    }
+    .detail-nationals-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+    }
+    .national-tag {
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-divider);
+    }
+
+    .detail-analysis {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Custom Map Markers ── */
+    .marker-pin {
+      width: 32px; height: 32px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      border: 2px solid rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+    .marker-pin-inner {
+      transform: rotate(45deg);
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      font-family: var(--font-mono);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    /* ── Legend ── */
+    #legend {
+      position: absolute;
+      bottom: var(--space-6);
+      left: var(--space-4);
+      z-index: 800;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      box-shadow: var(--shadow-md);
+      min-width: 160px;
+    }
+    .legend-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-text-faint);
+      margin-bottom: var(--space-2);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: 5px;
+      font-size: 11px;
+      color: var(--color-text-muted);
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Stats Bar ── */
+    #stats-bar {
+      position: absolute;
+      top: var(--space-3);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 800;
+      display: flex;
+      gap: var(--space-2);
+      pointer-events: none;
+    }
+    .stat-pill {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full, 9999px);
+      padding: 4px 12px;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      box-shadow: var(--shadow-sm);
+      white-space: nowrap;
+      font-family: var(--font-mono);
+    }
+    .stat-pill span { color: var(--color-primary); }
+
+    /* ── Panel Toggle Button ── */
+    #panel-toggle {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 900;
+      width: 24px; height: 48px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-right: none;
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all var(--transition-interactive);
+    }
+    #panel-toggle:hover { color: var(--color-primary); }
+
+    /* ── Leaflet Popup Override ── */
+    .leaflet-popup-content-wrapper {
+      background: var(--color-surface) !important;
+      color: var(--color-text) !important;
+      border: 1px solid var(--color-border) !important;
+      border-radius: var(--radius-lg) !important;
+      box-shadow: var(--shadow-md) !important;
+      padding: 0 !important;
+    }
+    .leaflet-popup-tip { background: var(--color-surface) !important; }
+    .leaflet-popup-content { margin: 0 !important; }
+    .leaflet-popup-close-button {
+      color: var(--color-text-muted) !important;
+      font-size: 20px !important;
+      top: 8px !important;
+      right: 10px !important;
+    }
+
+    .popup-inner {
+      padding: var(--space-3) var(--space-4);
+      min-width: 220px;
+      max-width: 280px;
+    }
+    .popup-address { font-weight: 700; font-size: var(--text-sm); margin-bottom: 2px; }
+    .popup-city { font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-2); }
+    .popup-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--text-xs);
+      margin-bottom: 4px;
+      color: var(--color-text-muted);
+    }
+    .popup-row span:last-child { font-weight: 600; color: var(--color-text); font-family: var(--font-mono); }
+    .popup-actions {
+      margin-top: var(--space-3);
+      display: flex;
+      gap: var(--space-2);
+    }
+    .popup-btn {
+      flex: 1;
+      padding: 6px 0;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      color: var(--color-text-muted);
+      transition: all var(--transition-interactive);
+    }
+    .popup-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .popup-btn.primary {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-text-inverse);
+    }
+    .popup-btn.primary:hover { filter: brightness(1.1); }
+
+    /* ── Search ── */
+    #search-wrap {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-4);
+      z-index: 800;
+    }
+    #search-input {
+      height: 34px;
+      padding: 0 var(--space-3) 0 32px;
+      border-radius: var(--radius-full, 9999px);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text);
+      font-size: var(--text-xs);
+      outline: none;
+      width: 200px;
+      transition: all var(--transition-interactive);
+    }
+    #search-input:focus { border-color: var(--color-primary); width: 240px; }
+    #search-input::placeholder { color: var(--color-text-faint); }
+    .search-icon {
+      position: absolute;
+      left: 10px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: var(--color-text-faint);
+      pointer-events: none;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      #side-panel { display: none; }
+      #stats-bar { top: auto; bottom: 120px; left: var(--space-3); transform: none; flex-direction: column; align-items: flex-start; }
+      #search-wrap { display: none; }
+      #legend { bottom: var(--space-3); left: var(--space-3); }
+      #filter-bar .filter-label { display: none; }
+      #detail-panel { padding: var(--space-4); }
+    }
+
+    /* ── Footer ── */
+    #footer {
+      text-align: center;
+      padding: var(--space-2);
+      font-size: 10px;
+      color: var(--color-text-muted);
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      flex-shrink: 0;
+    }
+    #footer a { color: var(--color-text-muted); }
+    #footer a:hover { color: var(--color-primary); }
+
+    /* ── No results ── */
+    #no-results {
+      padding: var(--space-8) var(--space-4);
+      text-align: center;
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      display: none;
+    }
+
+    /* Pulse animation for active markers */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .marker-pulse::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50% 50% 50% 0;
+      background: inherit;
+      animation: pulse-ring 2s cubic-bezier(0.16,1,0.3,1) infinite;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header id="topbar">
+    <!-- Logo -->
+    <div id="logo">
+      <!-- SVG Logo: FM geometric mark -->
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Foretag Management">
+        <rect width="28" height="28" rx="6" fill="var(--color-primary)"></rect>
+        <path d="M7 8h8M7 14h6M7 20v-12" stroke="white" stroke-width="2" stroke-linecap="round"></path>
+        <path d="M17 8l4 6-4 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <div id="logo-text">
+        Foretag
+        <span>QSR Pipeline Map</span>
+      </div>
+    </div>
+
+    <div id="topbar-divider"></div>
+
+    <!-- Filter Bar -->
+    <div id="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">Market</span>
+        <button class="chip active" data-filter="market" data-value="all">All</button>
+        <button class="chip" data-filter="market" data-value="Tampa MSA"><span class="dot" style="background:#f59e0b"></span>Tampa</button>
+        <button class="chip" data-filter="market" data-value="Orlando MSA"><span class="dot" style="background:#3b82f6"></span>Orlando</button>
+        <button class="chip" data-filter="market" data-value="Brevard"><span class="dot" style="background:#10b981"></span>Brevard</button>
+        <button class="chip" data-filter="market" data-value="SW Florida"><span class="dot" style="background:#a855f7"></span>SW Florida</button>
+        <button class="chip" data-filter="market" data-value="North FL"><span class="dot" style="background:#ef4444"></span>North FL</button>
+      </div>
+      <div id="topbar-divider" style="height:20px"></div>
+      <div class="filter-group">
+        <span class="filter-label">Stage</span>
+        <button class="chip active" data-filter="stage" data-value="all">All</button>
+        <button class="chip" data-filter="stage" data-value="Active"><span class="dot" style="background:#10b981"></span>Active</button>
+        <button class="chip" data-filter="stage" data-value="Analyzing"><span class="dot" style="background:#3b82f6"></span>Analyzing</button>
+        <button class="chip" data-filter="stage" data-value="Ground Lease"><span class="dot" style="background:#f59e0b"></span>Ground Lease</button>
+        <button class="chip" data-filter="stage" data-value="Reposition"><span class="dot" style="background:#a855f7"></span>Reposition</button>
+        <button class="chip" data-filter="stage" data-value="Passed"><span class="dot" style="background:#6b7280"></span>Passed</button>
+      </div>
+      <div id="topbar-divider" style="height:20px"></div>
+      <div class="filter-group">
+        <span class="filter-label">Score</span>
+        <button class="chip active" data-filter="score" data-value="all">All</button>
+        <button class="chip" data-filter="score" data-value="high">≥8</button>
+        <button class="chip" data-filter="score" data-value="mid">5–7</button>
+        <button class="chip" data-filter="score" data-value="low">≤4</button>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div id="topbar-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" data-theme-toggle="">
+        <i class="ph ph-moon"></i>
+      </button>
+      <button class="icon-btn" id="panel-btn" aria-label="Toggle list panel">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <div id="main">
+    <!-- Map -->
+    <div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/52.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 61px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/52(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 61px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/53.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 317px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/53(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 317px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/51.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, -195px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/51(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, -195px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/52(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 61px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/52(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 61px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/53(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 317px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/53(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 317px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/54.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 573px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/54(1).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 573px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/51(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, -195px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/51(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, -195px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/54(2).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 573px, 0px); opacity: 1;"><img alt="" src="./QSR Pipeline Map _ Foretag Management_files/54(3).png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 573px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(344px, 457px, 0px); z-index: 457;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #f59e0b;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">8</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(396px, 452px, 0px); z-index: 452;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #3b82f6;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">8</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(412px, 290px, 0px); z-index: 290;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #3b82f6;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">8</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(322px, 237px, 0px); z-index: 237;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #3b82f6;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">9</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(435px, 476px, 0px); z-index: 476;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #3b82f6;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">8</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(439px, 232px, 0px); z-index: 232;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #6b7280;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">5</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(433px, 243px, 0px); z-index: 243;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #6b7280;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">4</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(455px, 445px, 0px); z-index: 445;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #3b82f6;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">9</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(344px, 455px, 0px); z-index: 455;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #10b981;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">8</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(381px, 454px, 0px); z-index: 454;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #10b981;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">9</span>
+      </div>
+    </div><div class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" tabindex="0" role="button" style="margin-left: -16px; margin-top: -32px; width: 32px; height: 32px; transform: translate3d(465px, 434px, 0px); z-index: 434;">
+      <div style="
+        position: relative;
+        width: 32px;
+        height: 32px;
+        background: #3b82f6;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: 2px solid rgba(0,0,0,0.35);
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: 11px;
+          font-weight: 700;
+          color: white;
+          font-family: &#39;JetBrains Mono&#39;, monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">7</span>
+      </div>
+    </div></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="file:///E:/1%20Bus%20Plan%20Tenant%20Match/Foretag%20QSR%20Pipeline%20Map.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="file:///E:/1%20Bus%20Plan%20Tenant%20Match/Foretag%20QSR%20Pipeline%20Map.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"></div></div></div>
+
+    <!-- Stats overlay -->
+    <div id="stats-bar">
+      <div class="stat-pill" id="stat-showing">Showing <span id="showing-count">11</span> properties</div>
+      <div class="stat-pill">Avg score <span id="avg-score">7.5</span></div>
+      <div class="stat-pill">Active deals <span id="active-count">2</span></div>
+    </div>
+
+    <!-- Search -->
+    <div id="search-wrap">
+      <i class="ph ph-magnifying-glass search-icon"></i>
+      <input type="text" id="search-input" placeholder="Search address, city…" autocomplete="off">
+    </div>
+
+    <!-- Legend -->
+    <div id="legend">
+      <div class="legend-title">Deal Stage</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#10b981"></div>Active</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div>Analyzing</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div>Ground Lease</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div>Reposition</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#6b7280"></div>Passed</div>
+    </div>
+
+    <!-- Side Panel -->
+    <div id="side-panel">
+      <div id="panel-header">
+        <div id="panel-title">Pipeline</div>
+        <div id="panel-count">11 properties</div>
+      </div>
+      <div id="panel-list"><div id="no-results" style="display: none;"><i class="ph ph-funnel-x" style="font-size:24px;display:block;margin-bottom:8px"></i>No properties match filters</div>
+        <div class="property-card " data-id="1" onclick="selectProperty(1, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">3307 US Highway 19</div>
+              <div class="card-city">Holiday, FL 34691</div>
+            </div>
+            <span class="score-badge score-high">8/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+              Ground Lease
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+              Tampa MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">68,500 VPD</span>
+            <span class="meta-tag">Retail Pad / Ground Lease</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Walgreens · McDonald's · Wawa · 7-Eleven · Dollar General · Bealls +1 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="2" onclick="selectProperty(2, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">County Rd 54 E</div>
+              <div class="card-city">Zephyrhills, FL</div>
+            </div>
+            <span class="score-badge score-high">8/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Analyzing
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+              Tampa MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">~25,000 VPD</span>
+            <span class="meta-tag">Dev Land (1.44 AC)</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Winn-Dixie · Dollar General · Walgreens · Big Lots · Beall's · Walmart
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="3" onclick="selectProperty(3, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">200 Green Way</div>
+              <div class="card-city">Keystone Heights, FL 32656</div>
+            </div>
+            <span class="score-badge score-high">8/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Analyzing
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block"></span>
+              North FL
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">~15,000 VPD</span>
+            <span class="meta-tag">QSR Pad (Popeyes)</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Walgreens · CVS · McDonald's · Wendy's · Hardee's · Taco Bell +4 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="4" onclick="selectProperty(4, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">2005 Ohio Avenue North</div>
+              <div class="card-city">Live Oak, FL 32064</div>
+            </div>
+            <span class="score-badge score-high">9/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Analyzing
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block"></span>
+              North FL
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">14,400 VPD (Ohio Ave) / 30,100 VPD (I-10)</span>
+            <span class="meta-tag">QSR Pad (Popeyes)</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Walmart Supercenter · Publix · Chick-fil-A · Wendy's · Walgreens · Big Lots +2 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="5" onclick="selectProperty(5, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">1603 3rd St SW</div>
+              <div class="card-city">Winter Haven, FL 33880</div>
+            </div>
+            <span class="score-badge score-high">8/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Analyzing
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+              Tampa MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">24,500–34,000 AADT</span>
+            <span class="meta-tag">Retail / Drive-Thru (2,532 SF)</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Lowe's · Wawa · Taco Bell · Dunkin' · Walmart · Publix +4 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="6" onclick="selectProperty(6, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">1833 Kings Road</div>
+              <div class="card-city">Jacksonville, FL 32209</div>
+            </div>
+            <span class="score-badge score-mid">5/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#6b7280;display:inline-block"></span>
+              Passed
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block"></span>
+              North FL
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">17,000 VPD</span>
+            <span class="meta-tag">QSR Pad (Popeyes)</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Walgreens · Family Dollar · McDonald's · Burger King · Checkers · Advance Auto
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="7" onclick="selectProperty(7, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">8275 103rd Street</div>
+              <div class="card-city">Jacksonville, FL 32210</div>
+            </div>
+            <span class="score-badge score-low">4/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#6b7280;display:inline-block"></span>
+              Passed
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#ef4444;display:inline-block"></span>
+              North FL
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">18,000–22,000 AADT</span>
+            <span class="meta-tag">Dev Land</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Dollar General · AutoZone
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="8" onclick="selectProperty(8, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">4545 Irlo Bronson Memorial Hwy</div>
+              <div class="card-city">Kissimmee, FL 34746</div>
+            </div>
+            <span class="score-badge score-high">9/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Analyzing
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Orlando MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">67,000 AADT</span>
+            <span class="meta-tag">Dev Land (3 AC)</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Walmart · Publix · Target · McDonald's · Chick-fil-A · Starbucks +2 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="9" onclick="selectProperty(9, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">US Highway 19 Corridor</div>
+              <div class="card-city">Holiday / New Port Richey, FL</div>
+            </div>
+            <span class="score-badge score-high">8/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block"></span>
+              Active
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+              Tampa MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">55,000–70,000 VPD</span>
+            <span class="meta-tag">Corridor Analysis</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Walmart · Publix · McDonald's · Burger King · Chick-fil-A · Wawa +4 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="10" onclick="selectProperty(10, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">SR-54 / Meadow Pointe Corridor</div>
+              <div class="card-city">Wesley Chapel, FL 33543</div>
+            </div>
+            <span class="score-badge score-high">9/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#10b981;display:inline-block"></span>
+              Active
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+              Tampa MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">45,000–55,000 VPD</span>
+            <span class="meta-tag">Multi-Pad Corridor</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            Publix · Target · Walmart · Chick-fil-A · Starbucks · Wawa +4 more
+          </div>
+        </div>
+      
+        <div class="property-card " data-id="11" onclick="selectProperty(11, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">US 441 / Orange Blossom Trail</div>
+              <div class="card-city">Orlando / Kissimmee, FL</div>
+            </div>
+            <span class="score-badge score-mid">7/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Analyzing
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:#3b82f6;display:inline-block"></span>
+              Orlando MSA
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">35,000–50,000 AADT</span>
+            <span class="meta-tag">Corridor Analysis</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            McDonald's · Burger King · Popeyes · Dollar General · Family Dollar · AutoZone
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel toggle tab -->
+    <button id="panel-toggle" onclick="togglePanel()" aria-label="Toggle side panel">
+      <i class="ph ph-caret-right" id="panel-toggle-icon"></i>
+    </button>
+  </div>
+
+  <!-- Detail Overlay (mobile) -->
+  <div id="detail-overlay" role="dialog" aria-modal="true">
+    <div id="detail-panel">
+      <div class="detail-close">
+        <button onclick="closeDetail()" aria-label="Close">
+          <i class="ph ph-x"></i>
+        </button>
+      </div>
+      <div id="detail-body"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    &nbsp;·&nbsp; Foretag Management LLC &nbsp;·&nbsp; Internal Use Only
+  </footer>
+
+  <script>
+  // ── Property Data ──
+  // All addresses from Corridor Cluster Checks, Missing Nationals, and Demand Analyses
+  const PROPERTIES = [
+    {
+      id: 1,
+      address: "3307 US Highway 19",
+      city: "Holiday, FL 34691",
+      market: "Tampa MSA",
+      submarket: "Pasco County / US-19",
+      assetType: "Retail Pad / Ground Lease",
+      score: 8,
+      stage: "Ground Lease",
+      traffic: "68,500 VPD",
+      trafficRoad: "US-19",
+      lat: 28.1875,
+      lng: -82.7366,
+      size: "0.60 AC / 3,880 SF",
+      zoning: "C-2",
+      loopnet: "https://www.loopnet.com",
+      analysis: "AM-side positioning, median cut + Beacon Square Dr access. Scooter's Coffee ground lease fell through — actively re-tenanting. High AADT, strong morning commute capture.",
+      nationals: ["Walgreens","McDonald's","Wawa","7-Eleven","Dollar General","Bealls","Publix"],
+      missing: ["Starbucks","Dunkin'","Dutch Bros","Scooter's","Smoothie King","Chipotle"],
+      checkType: "Corridor Cluster + Ground Lease"
+    },
+    {
+      id: 2,
+      address: "County Rd 54 E",
+      city: "Zephyrhills, FL",
+      market: "Tampa MSA",
+      submarket: "Pasco County / CR-54",
+      assetType: "Dev Land (1.44 AC)",
+      score: 8,
+      stage: "Analyzing",
+      traffic: "~25,000 VPD",
+      trafficRoad: "CR 54 / SR 54",
+      lat: 28.2336,
+      lng: -82.1696,
+      size: "1.44 AC",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com",
+      analysis: "Primary E-W commuter arterial linking Wesley Chapel/I-75 with Zephyrhills and US-301. Eastern flank of the major SR-54 retail spine. Strong western corridor density at SR-54 nodes.",
+      nationals: ["Winn-Dixie","Dollar General","Walgreens","Big Lots","Beall's","Walmart"],
+      missing: ["Chick-fil-A","Popeyes","Starbucks","Raising Cane's","Jersey Mike's"],
+      checkType: "Corridor Cluster Check"
+    },
+    {
+      id: 3,
+      address: "200 Green Way",
+      city: "Keystone Heights, FL 32656",
+      market: "North FL",
+      submarket: "Clay County / SR-21",
+      assetType: "QSR Pad (Popeyes)",
+      score: 8,
+      stage: "Analyzing",
+      traffic: "~15,000 VPD",
+      trafficRoad: "SR-21 / Lawrence Blvd",
+      lat: 29.7897,
+      lng: -81.9937,
+      size: "~0.75 AC",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com",
+      analysis: "Popeyes pad at the SR-21 & SR-100 primary commercial gateway. Dollar General on same site (300 Green Way). Dense national cluster at intersection. Walgreens, CVS, McDonald's, Wendy's, Hardee's, Taco Bell, Subway all within 1 mile.",
+      nationals: ["Walgreens","CVS","McDonald's","Wendy's","Hardee's","Taco Bell","Subway","Dollar General","Family Dollar","AutoZone"],
+      missing: ["Chick-fil-A","Starbucks","Dunkin'","Raising Cane's","Zaxby's"],
+      checkType: "Corridor Cluster Check"
+    },
+    {
+      id: 4,
+      address: "2005 Ohio Avenue North",
+      city: "Live Oak, FL 32064",
+      market: "North FL",
+      submarket: "Suwannee County / US-129",
+      assetType: "QSR Pad (Popeyes)",
+      score: 9,
+      stage: "Analyzing",
+      traffic: "14,400 VPD (Ohio Ave) / 30,100 VPD (I-10)",
+      trafficRoad: "US-129 / Ohio Ave N",
+      lat: 30.2979,
+      lng: -82.9829,
+      size: "~0.75 AC",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com",
+      analysis: "Highest corridor score in pipeline. Primary retail spine connecting to I-10 interchange. Chick-fil-A immediate neighbor. Walmart, Publix, Tractor Supply, Big Lots, Dollar Tree all on same corridor. Proven institutional QSR node.",
+      nationals: ["Walmart Supercenter","Publix","Chick-fil-A","Wendy's","Walgreens","Big Lots","Dollar Tree","Tractor Supply"],
+      missing: ["Starbucks","Raising Cane's","Jersey Mike's","Zaxby's","Freddy's"],
+      checkType: "Corridor Cluster Check (9/10)"
+    },
+    {
+      id: 5,
+      address: "1603 3rd St SW",
+      city: "Winter Haven, FL 33880",
+      market: "Tampa MSA",
+      submarket: "Polk County / US-17",
+      assetType: "Retail / Drive-Thru (2,532 SF)",
+      score: 8,
+      stage: "Analyzing",
+      traffic: "24,500–34,000 AADT",
+      trafficRoad: "US Highway 17",
+      lat: 28.0026,
+      lng: -81.7354,
+      size: "2,532 SF w/ drive-thru",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com/property/1603-3rd-st-sw-winter-haven-fl-33880/12105-262832646500000082/",
+      analysis: "US-17 dominant retail arterial. Target opening 2025 at 3rd St & Ave R (149,000 SF) on same corridor. 18+ national brands within 1-2 miles. Lowe's, Wawa, Carrabba's, Taco Bell, Dunkin', ALDI, Publix, Walmart all nearby. Drive-thru capable building.",
+      nationals: ["Lowe's","Wawa","Taco Bell","Dunkin'","Walmart","Publix","ALDI","Starbucks","Chick-fil-A","Target (opening)"],
+      missing: ["Raising Cane's","Freddy's","Dutch Bros","Smoothie King","Culver's"],
+      checkType: "Corridor Cluster Check"
+    },
+    {
+      id: 6,
+      address: "1833 Kings Road",
+      city: "Jacksonville, FL 32209",
+      market: "North FL",
+      submarket: "Duval County / Kings Road",
+      assetType: "QSR Pad (Popeyes)",
+      score: 5,
+      stage: "Passed",
+      traffic: "17,000 VPD",
+      trafficRoad: "Kings Road",
+      lat: 30.3479,
+      lng: -81.6914,
+      size: "~0.75 AC",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com",
+      analysis: "Secondary urban arterial ~2mi north of downtown Jacksonville. Transitional corridor between downtown and residential. Sparse national co-tenancy. No grocery anchor on corridor. I-95 nearby (98K VPD) but provides visibility only, not access. Does not meet 8+ threshold.",
+      nationals: ["Walgreens","Family Dollar","McDonald's","Burger King","Checkers","Advance Auto"],
+      missing: [],
+      checkType: "Corridor Cluster Check (5/10 — PASS)"
+    },
+    {
+      id: 7,
+      address: "8275 103rd Street",
+      city: "Jacksonville, FL 32210",
+      market: "North FL",
+      submarket: "Duval County / 103rd St",
+      assetType: "Dev Land",
+      score: 4,
+      stage: "Passed",
+      traffic: "18,000–22,000 AADT",
+      trafficRoad: "103rd Street",
+      lat: 30.2358,
+      lng: -81.7573,
+      size: "Commercial Land",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com/Listing/8275-103rd-St-Jacksonville-FL/38816517/",
+      analysis: "Listed as '45,000 VPD I-10 corridor' — misleading. Actual 103rd St traffic 18-22K AADT, well below 25K+ QSR minimum. Mid-corridor between Blanding Blvd node and Cecil Commerce. Priced at $692K/acre — 40-50% premium over fundamentals. PASS.",
+      nationals: ["Dollar General","AutoZone"],
+      missing: [],
+      checkType: "Corridor Cluster Check (4/10 — PASS)"
+    },
+    {
+      id: 8,
+      address: "4545 Irlo Bronson Memorial Hwy",
+      city: "Kissimmee, FL 34746",
+      market: "Orlando MSA",
+      submarket: "Osceola County / US-192",
+      assetType: "Dev Land (3 AC)",
+      score: 9,
+      stage: "Analyzing",
+      traffic: "67,000 AADT",
+      trafficRoad: "US-192 (Irlo Bronson Hwy)",
+      lat: 28.3025,
+      lng: -81.5180,
+      size: "±3 AC (±2 AC buildable)",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com/Listing/4545-Irlo-Bronson-Memorial-hwy-Kissimmee-FL/38478943/",
+      analysis: "Exceptional US-192 tourist/commuter corridor. 67K AADT. Single anchor scenario — 80+ nationals could work on 3 AC. Top candidates: Chick-fil-A, Chipotle, Freddy's (QSR pads $2-3M at 4-5% cap), or single anchor medical/fitness/convenience. Tenant match report completed.",
+      nationals: ["Walmart","Publix","Target","McDonald's","Chick-fil-A","Starbucks","Walgreens","CVS"],
+      missing: ["Raising Cane's","Freddy's","Shake Shack","Dave's Hot Chicken","Dutch Bros","Culver's"],
+      checkType: "Demand Analysis + Tenant Match"
+    },
+    {
+      id: 9,
+      address: "US Highway 19 Corridor",
+      city: "Holiday / New Port Richey, FL",
+      market: "Tampa MSA",
+      submarket: "Pasco County / US-19 N",
+      assetType: "Corridor Analysis",
+      score: 8,
+      stage: "Active",
+      traffic: "55,000–70,000 VPD",
+      trafficRoad: "US Highway 19",
+      lat: 28.2100,
+      lng: -82.7420,
+      size: "Multiple pads",
+      zoning: "Various C-2/C-3",
+      loopnet: "https://www.loopnet.com",
+      analysis: "Primary US-19 corridor study area covering Holiday to New Port Richey. High AADT, AM-side advantage on multiple parcels. Pepper-Pipeline target zone. National density validates QSR/drive-thru demand.",
+      nationals: ["Walmart","Publix","McDonald's","Burger King","Chick-fil-A","Wawa","Circle K","Walgreens","CVS","Dollar General"],
+      missing: ["Dutch Bros","Scooter's Coffee","Smoothie King","Tropical Smoothie","Crumbl"],
+      checkType: "Corridor Cluster Analysis (Active)"
+    },
+    {
+      id: 10,
+      address: "SR-54 / Meadow Pointe Corridor",
+      city: "Wesley Chapel, FL 33543",
+      market: "Tampa MSA",
+      submarket: "Pasco County / SR-54 W",
+      assetType: "Multi-Pad Corridor",
+      score: 9,
+      stage: "Active",
+      traffic: "45,000–55,000 VPD",
+      trafficRoad: "SR 54 / Wesley Chapel Blvd",
+      lat: 28.2195,
+      lng: -82.3282,
+      size: "Multiple parcels",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com",
+      analysis: "Wesley Chapel's primary growth corridor. Fastest growing submarket in Pasco County. Density of nationals validates premium site selection. Primary Pepper-Pipeline active zone. High-confidence cluster.",
+      nationals: ["Publix","Target","Walmart","Chick-fil-A","Starbucks","Wawa","McDonald's","Lowe's","Home Depot","Best Buy"],
+      missing: ["Raising Cane's","Shake Shack","Dave's Hot Chicken","Portillo's","First Watch"],
+      checkType: "Demand Analysis (Active)"
+    },
+    {
+      id: 11,
+      address: "US 441 / Orange Blossom Trail",
+      city: "Orlando / Kissimmee, FL",
+      market: "Orlando MSA",
+      submarket: "Orange/Osceola / OBT",
+      assetType: "Corridor Analysis",
+      score: 7,
+      stage: "Analyzing",
+      traffic: "35,000–50,000 AADT",
+      trafficRoad: "US 441 / OBT",
+      lat: 28.4095,
+      lng: -81.4050,
+      size: "Various",
+      zoning: "Commercial",
+      loopnet: "https://www.loopnet.com",
+      analysis: "OBT corridor — high-volume but mixed demographics and quality. Repositioning opportunities in QSR-dense nodes. Value-add play with re-tenanting potential. Selected nodes score higher than corridor average.",
+      nationals: ["McDonald's","Burger King","Popeyes","Dollar General","Family Dollar","AutoZone"],
+      missing: ["Chick-fil-A","Starbucks","Wawa","Raising Cane's"],
+      checkType: "Corridor Cluster Check"
+    }
+  ];
+
+  // ── State ──
+  let activeFilters = { market: 'all', stage: 'all', score: 'all' };
+  let selectedId = null;
+  let panelOpen = true;
+  let map, markers = {}, currentTheme = 'dark';
+  let searchQuery = '';
+
+  // ── Stage Colors ──
+  const STAGE_COLORS = {
+    'Active':       '#10b981',
+    'Analyzing':    '#3b82f6',
+    'Ground Lease': '#f59e0b',
+    'Reposition':   '#a855f7',
+    'Passed':       '#6b7280'
+  };
+
+  const MARKET_COLORS = {
+    'Tampa MSA':  '#f59e0b',
+    'Orlando MSA':'#3b82f6',
+    'Brevard':    '#10b981',
+    'SW Florida': '#a855f7',
+    'North FL':   '#ef4444'
+  };
+
+  // ── Init Map ──
+  function initMap() {
+    map = L.map('map', {
+      center: [28.6, -82.2],
+      zoom: 7,
+      zoomControl: true,
+      attributionControl: false
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19
+    }).addTo(map);
+
+    PROPERTIES.forEach(p => addMarker(p));
+    renderPanel();
+    updateStats();
+  }
+
+  // ── Create Marker Icon ──
+  function createIcon(property, selected = false) {
+    const color = STAGE_COLORS[property.stage] || '#6b7280';
+    const score = property.score;
+    const isActive = property.stage === 'Active';
+
+    const html = `
+      <div style="
+        position: relative;
+        width: ${selected ? 40 : 32}px;
+        height: ${selected ? 40 : 32}px;
+        background: ${color};
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        border: ${selected ? '3px' : '2px'} solid ${selected ? 'white' : 'rgba(0,0,0,0.35)'};
+        box-shadow: 0 3px 12px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+        <span style="
+          transform: rotate(45deg);
+          font-size: ${selected ? 13 : 11}px;
+          font-weight: 700;
+          color: white;
+          font-family: 'JetBrains Mono', monospace;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        ">${score}</span>
+      </div>
+    `;
+
+    return L.divIcon({
+      html,
+      className: '',
+      iconSize: [selected ? 40 : 32, selected ? 40 : 32],
+      iconAnchor: [selected ? 20 : 16, selected ? 40 : 32],
+      popupAnchor: [0, -(selected ? 40 : 32)]
+    });
+  }
+
+  // ── Add Marker ──
+  function addMarker(property) {
+    const marker = L.marker([property.lat, property.lng], {
+      icon: createIcon(property)
+    });
+
+    const scoreClass = property.score >= 8 ? 'score-high' : property.score >= 5 ? 'score-mid' : 'score-low';
+    const stageColor = STAGE_COLORS[property.stage] || '#6b7280';
+
+    marker.bindPopup(`
+      <div class="popup-inner">
+        <div class="popup-address">${property.address}</div>
+        <div class="popup-city">${property.city}</div>
+        <div class="popup-row">
+          <span>Stage</span>
+          <span style="display:flex;align-items:center;gap:5px">
+            <span style="width:7px;height:7px;border-radius:50%;background:${stageColor};display:inline-block"></span>
+            ${property.stage}
+          </span>
+        </div>
+        <div class="popup-row">
+          <span>Score</span>
+          <span class="score-badge ${scoreClass}">${property.score}/10</span>
+        </div>
+        <div class="popup-row">
+          <span>Traffic</span>
+          <span>${property.traffic}</span>
+        </div>
+        <div class="popup-row">
+          <span>Submarket</span>
+          <span style="font-size:10px;font-weight:500;color:var(--color-text-muted)">${property.submarket}</span>
+        </div>
+        <div class="popup-actions">
+          <button class="popup-btn" onclick="openDetail(${property.id})">Full Report</button>
+          <button class="popup-btn primary" onclick="selectFromMap(${property.id})">View in List</button>
+        </div>
+      </div>
+    `, { maxWidth: 300 });
+
+    marker.on('click', () => {
+      selectProperty(property.id, false);
+    });
+
+    marker.addTo(map);
+    markers[property.id] = marker;
+  }
+
+  // ── Filter Logic ──
+  function getFilteredProperties() {
+    return PROPERTIES.filter(p => {
+      if (activeFilters.market !== 'all' && p.market !== activeFilters.market) return false;
+      if (activeFilters.stage !== 'all' && p.stage !== activeFilters.stage) return false;
+      if (activeFilters.score !== 'all') {
+        if (activeFilters.score === 'high' && p.score < 8) return false;
+        if (activeFilters.score === 'mid' && (p.score < 5 || p.score > 7)) return false;
+        if (activeFilters.score === 'low' && p.score > 4) return false;
+      }
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        if (!p.address.toLowerCase().includes(q) && !p.city.toLowerCase().includes(q) && !p.submarket.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    });
+  }
+
+  // ── Render Panel ──
+  function renderPanel() {
+    const filtered = getFilteredProperties();
+    const list = document.getElementById('panel-list');
+    const noResults = document.getElementById('no-results');
+    const count = document.getElementById('panel-count');
+
+    count.textContent = `${filtered.length} propert${filtered.length === 1 ? 'y' : 'ies'}`;
+
+    // Show/hide markers
+    PROPERTIES.forEach(p => {
+      const m = markers[p.id];
+      if (!m) return;
+      if (filtered.find(f => f.id === p.id)) {
+        if (!map.hasLayer(m)) m.addTo(map);
+      } else {
+        if (map.hasLayer(m)) map.removeLayer(m);
+      }
+    });
+
+    if (filtered.length === 0) {
+      noResults.style.display = 'block';
+      list.innerHTML = '';
+      list.appendChild(noResults);
+      return;
+    }
+
+    noResults.style.display = 'none';
+
+    // Build cards
+    list.innerHTML = filtered.map(p => {
+      const scoreClass = p.score >= 8 ? 'score-high' : p.score >= 5 ? 'score-mid' : 'score-low';
+      const stageColor = STAGE_COLORS[p.stage] || '#6b7280';
+      const marketColor = MARKET_COLORS[p.market] || '#6b7280';
+      const isSelected = p.id === selectedId;
+
+      return `
+        <div class="property-card ${isSelected ? 'selected' : ''}" data-id="${p.id}" onclick="selectProperty(${p.id}, true)">
+          <div class="card-header">
+            <div>
+              <div class="card-address">${p.address}</div>
+              <div class="card-city">${p.city}</div>
+            </div>
+            <span class="score-badge ${scoreClass}">${p.score}/10</span>
+          </div>
+          <div class="card-meta">
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:${stageColor};display:inline-block"></span>
+              ${p.stage}
+            </span>
+            <span class="meta-tag">
+              <span style="width:6px;height:6px;border-radius:50%;background:${marketColor};display:inline-block"></span>
+              ${p.market}
+            </span>
+            <span class="meta-tag" style="font-family:var(--font-mono)">${p.traffic}</span>
+            <span class="meta-tag">${p.assetType}</span>
+          </div>
+          <div class="card-nationals">
+            <strong>Nearby Nationals</strong>
+            ${p.nationals.slice(0, 6).join(' · ')}${p.nationals.length > 6 ? ` +${p.nationals.length - 6} more` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    list.insertAdjacentElement('afterbegin', noResults);
+    updateStats(filtered);
+  }
+
+  // ── Update Stats ──
+  function updateStats(filtered) {
+    filtered = filtered || getFilteredProperties();
+    document.getElementById('showing-count').textContent = filtered.length;
+
+    if (filtered.length > 0) {
+      const avg = (filtered.reduce((s, p) => s + p.score, 0) / filtered.length).toFixed(1);
+      document.getElementById('avg-score').textContent = avg;
+    } else {
+      document.getElementById('avg-score').textContent = '—';
+    }
+
+    const active = filtered.filter(p => p.stage === 'Active').length;
+    document.getElementById('active-count').textContent = active;
+  }
+
+  // ── Select Property ──
+  function selectProperty(id, panelClick) {
+    selectedId = id;
+    const prop = PROPERTIES.find(p => p.id === id);
+    if (!prop) return;
+
+    // Update marker icons
+    PROPERTIES.forEach(p => {
+      const m = markers[p.id];
+      if (m) m.setIcon(createIcon(p, p.id === id));
+    });
+
+    // Fly to marker
+    if (!panelClick) {
+      map.flyTo([prop.lat, prop.lng], Math.max(map.getZoom(), 13), { duration: 0.8 });
+    } else {
+      map.flyTo([prop.lat, prop.lng], Math.max(map.getZoom(), 12), { duration: 0.8 });
+      markers[id]?.openPopup();
+    }
+
+    // Highlight card in panel
+    document.querySelectorAll('.property-card').forEach(el => {
+      el.classList.toggle('selected', parseInt(el.dataset.id) === id);
+    });
+
+    // Scroll card into view
+    const card = document.querySelector(`.property-card[data-id="${id}"]`);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function selectFromMap(id) {
+    selectProperty(id, true);
+  }
+
+  // ── Open Detail ──
+  function openDetail(id) {
+    const p = PROPERTIES.find(prop => prop.id === id);
+    if (!p) return;
+
+    const scoreClass = p.score >= 8 ? 'score-high' : p.score >= 5 ? 'score-mid' : 'score-low';
+    const stageColor = STAGE_COLORS[p.stage] || '#6b7280';
+
+    document.getElementById('detail-body').innerHTML = `
+      <div class="detail-address">${p.address}</div>
+      <div class="detail-city">${p.city} &nbsp;·&nbsp; ${p.market}</div>
+
+      <div class="detail-grid">
+        <div class="detail-stat">
+          <div class="detail-stat-label">Cluster Score</div>
+          <div class="detail-stat-value" style="color:${p.score >= 8 ? 'var(--color-score-high)' : p.score >= 5 ? 'var(--color-score-mid)' : 'var(--color-score-low)'}">${p.score}/10</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">Deal Stage</div>
+          <div class="detail-stat-value" style="display:flex;align-items:center;gap:6px">
+            <span style="width:9px;height:9px;border-radius:50%;background:${stageColor};display:inline-block;flex-shrink:0"></span>
+            ${p.stage}
+          </div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">FDOT Traffic</div>
+          <div class="detail-stat-value">${p.traffic}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">Road</div>
+          <div class="detail-stat-value">${p.trafficRoad}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">Asset Type</div>
+          <div class="detail-stat-value" style="font-family:var(--font-body);font-size:var(--text-xs)">${p.assetType}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">Size</div>
+          <div class="detail-stat-value" style="font-family:var(--font-body);font-size:var(--text-xs)">${p.size}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">Submarket</div>
+          <div class="detail-stat-value" style="font-family:var(--font-body);font-size:var(--text-xs)">${p.submarket}</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-stat-label">Zoning</div>
+          <div class="detail-stat-value">${p.zoning}</div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">Analysis Type</div>
+        <span class="meta-tag" style="font-size:var(--text-xs)">${p.checkType}</span>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-section-title">Confirmed Nationals Nearby</div>
+        <div class="detail-nationals-list">
+          ${p.nationals.map(n => `<span class="national-tag">${n}</span>`).join('')}
+        </div>
+      </div>
+
+      ${p.missing.length > 0 ? `
+        <div class="detail-section">
+          <div class="detail-section-title">Missing Nationals (Opportunity)</div>
+          <div class="detail-nationals-list">
+            ${p.missing.map(n => `<span class="national-tag" style="border-color:var(--color-primary);color:var(--color-primary)">${n}</span>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="detail-section">
+        <div class="detail-section-title">Corridor Analysis</div>
+        <div class="detail-analysis">${p.analysis}</div>
+      </div>
+    `;
+
+    document.getElementById('detail-overlay').classList.add('open');
+  }
+
+  function closeDetail() {
+    document.getElementById('detail-overlay').classList.remove('open');
+  }
+
+  // ── Toggle Panel ──
+  function togglePanel() {
+    panelOpen = !panelOpen;
+    document.getElementById('side-panel').classList.toggle('collapsed', !panelOpen);
+    const icon = document.getElementById('panel-toggle-icon');
+    icon.className = panelOpen ? 'ph ph-caret-right' : 'ph ph-caret-left';
+  }
+
+  // ── Filter Chips ──
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const type = chip.dataset.filter;
+      const value = chip.dataset.value;
+
+      // Update active chip in group
+      document.querySelectorAll(`.chip[data-filter="${type}"]`).forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      activeFilters[type] = value;
+      renderPanel();
+      updateStats();
+    });
+  });
+
+  // ── Search ──
+  document.getElementById('search-input').addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    renderPanel();
+    updateStats();
+  });
+
+  // ── Theme Toggle ──
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const html = document.documentElement;
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', currentTheme);
+    const icon = document.querySelector('#theme-toggle i');
+    icon.className = currentTheme === 'dark' ? 'ph ph-moon' : 'ph ph-sun';
+  });
+
+  // ── Panel button ──
+  document.getElementById('panel-btn').addEventListener('click', togglePanel);
+
+  // ── Close detail on backdrop click ──
+  document.getElementById('detail-overlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('detail-overlay')) closeDetail();
+  });
+
+  // ── Keyboard nav ──
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeDetail();
+  });
+
+  // ── Init ──
+  initMap();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Foretag QSR Pipeline Map",
+    "description": "Florida QSR acquisition pipeline visualization tool",
+    "creator": {
+      "@type": "SoftwareApplication",
+      "name": "Perplexity Computer",
+      "url": "https://www.perplexity.ai/computer"
+    }
+  }
+  </script>
+
+
+</body></html>
